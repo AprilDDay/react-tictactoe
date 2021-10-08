@@ -12,6 +12,19 @@ const pStyle = {
 
 
 function Game(){
+
+    const [layout, setLayout] = useState(Array(9).fill(null));
+    const [xIsNext, setXisNext] = useState(true);
+    const winner = checkWinner(layout)
+
+    const handleClick = (i) => {
+        const layoutState = [...layout];
+        if (winner || layoutState[i]) return;
+        layoutState[i] = xIsNext ? 'X' : 'O';
+        setLayout(layoutState);
+        setXisNext(!xIsNext);
+    }
+
     return(
         <React.Fragment>
             <Layout boxes={layout}/>
@@ -23,3 +36,5 @@ function Game(){
 }
 
 export default Game;
+
+//https://blog.logrocket.com/using-react-in-web-games/
