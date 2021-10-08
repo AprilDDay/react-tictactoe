@@ -27,9 +27,11 @@ function Game(){
 
     return(
         <React.Fragment>
-            <Layout boxes={layout}/>
+            <Layout boxes={layout} onClick={handleClick}/>
             <div style={styles}>
-                <p style={pStyle}>winner goes here</p> 
+                <p style={pStyle}>{
+                    winner? 'Winner: ' + winner : 'Next Player '+ (xIsNext ? 'X' : 'O')
+                }</p> 
             </div>
         </React.Fragment>
     )
